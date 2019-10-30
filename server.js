@@ -15,7 +15,7 @@ const mealsRoute = require('./meals.route')
 const passport = require("passport")
 
 mongoose.Promise = global.Promise
-mongoose.connect(config.DB, {useNewUrlParser: true , useFindAndModify: false, useUnifiedTopology: true}).then(
+mongoose.connect(config.DB, {useNewUrlParser: true , useFindAndModify: false, useUnifiedTopology: true, reconnectTries:30,reconnectInterval: 500}).then(
   () => {console.log('Databse is connected')},
   err => { console.log('Can not connect to the database' + err)}
 )

@@ -79,6 +79,15 @@ eventRoutes.route('/').get(function (req, res) {
   });
 });
 
+//  single event route
+
+eventRoutes.route('/singleEvent/:id').get(function (req, res) {
+  let id = req.params.id;
+  Event.findById(id, function (err, event){
+      res.json(event);
+  });
+});
+
 // Defined edit route
 eventRoutes.route('/editEvent/:id').get(function (req, res) {
   let id = req.params.id;
@@ -86,6 +95,8 @@ eventRoutes.route('/editEvent/:id').get(function (req, res) {
       res.json(event);
   });
 });
+
+
 
 //  Defined update route
 eventRoutes.route('/updateEvent/:id').post(function (req, res) {
